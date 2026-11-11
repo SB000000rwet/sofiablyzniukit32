@@ -1,0 +1,8 @@
+<h2>Наші курси</h2>
+
+<app-course-card
+  *ngFor="let course of courses"
+  [courseName]="course.name"
+  [teacher]="course.teacher"
+  (enroll)="onEnroll()">
+</app-course-card>
