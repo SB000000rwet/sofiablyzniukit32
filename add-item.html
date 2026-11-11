@@ -1,0 +1,91 @@
+<h2>Додати нову книгу</h2>
+
+<form [formGroup]="bookForm" (ngSubmit)="addBook()">
+
+  <label>Назва книги:</label>
+  <br>
+
+  <input
+    type="text"
+    formControlName="title"
+  >
+
+  <div *ngIf="
+    bookForm.controls.title.touched &&
+    bookForm.controls.title.invalid
+  ">
+
+    <small *ngIf="bookForm.controls.title.errors?.['required']">
+      Назва обов'язкова
+    </small>
+
+    <small *ngIf="bookForm.controls.title.errors?.['minlength']">
+      Мінімум 2 символи
+    </small>
+
+    <small *ngIf="bookForm.controls.title.errors?.['maxlength']">
+      Максимум 50 символів
+    </small>
+
+  </div>
+
+  <br><br>
+
+  <label>Автор:</label>
+  <br>
+
+  <input
+    type="text"
+    formControlName="author"
+  >
+
+  <div *ngIf="
+    bookForm.controls.author.touched &&
+    bookForm.controls.author.invalid
+  ">
+
+    <small *ngIf="bookForm.controls.author.errors?.['required']">
+      Автор обов'язковий
+    </small>
+
+    <small *ngIf="bookForm.controls.author.errors?.['minlength']">
+      Мінімум 3 символи
+    </small>
+
+    <small *ngIf="bookForm.controls.author.errors?.['maxlength']">
+      Максимум 50 символів
+    </small>
+
+  </div>
+
+  <br><br>
+
+  <label>Опис:</label>
+  <br>
+
+  <textarea
+    formControlName="description"
+  ></textarea>
+
+  <div *ngIf="
+    bookForm.controls.description.touched &&
+    bookForm.controls.description.invalid
+  ">
+
+    <small *ngIf="bookForm.controls.description.errors?.['required']">
+      Опис обов'язковий
+    </small>
+
+    <small *ngIf="bookForm.controls.description.errors?.['minlength']">
+      Мінімум 10 символів
+    </small>
+
+  </div>
+
+  <br><br>
+
+  <button type="submit">
+    Додати книгу
+  </button>
+
+</form>
