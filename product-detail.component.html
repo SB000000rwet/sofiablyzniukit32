@@ -1,0 +1,13 @@
+<div *ngIf="product; else notFound">
+
+  <h2>{{ product.name }}</h2>
+
+  <p>Ціна: {{ product.price }} грн</p>
+
+  <p>Кількість: {{ product.quantity }}</p>
+
+</div>
+
+<ng-template #notFound>
+  <h2>Товар не знайдено</h2>
+</ng-template>

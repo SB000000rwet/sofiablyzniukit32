@@ -1,0 +1,15 @@
+<h2>Каталог товарів</h2>
+
+<div *ngFor="let product of products">
+
+  <h3>{{ product.name }}</h3>
+
+  <p>Ціна: {{ product.price }} грн</p>
+
+  <a [routerLink]="['/product', product.id]">
+    Переглянути товар
+  </a>
+
+  <hr>
+
+</div>
