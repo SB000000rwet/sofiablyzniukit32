@@ -1,0 +1,111 @@
+<h2>Додати книгу</h2>
+
+<form #form="ngForm" (ngSubmit)="addBook(form)">
+
+  <!-- Назва книги -->
+  <label>Назва книги:</label>
+  <br>
+
+  <input
+    type="text"
+    name="title"
+    [(ngModel)]="title"
+    #titleInput="ngModel"
+    required
+    minlength="2"
+    maxlength="50"
+  >
+
+  <div *ngIf="titleInput.invalid && titleInput.touched">
+
+    <small *ngIf="titleInput.errors?.['required']">
+      Назва книги обов'язкова
+    </small>
+
+    <small *ngIf="titleInput.errors?.['minlength']">
+      Назва повинна містити мінімум 2 символи
+    </small>
+
+  </div>
+
+  <br><br>
+
+  <!-- Автор -->
+  <label>Автор:</label>
+  <br>
+
+  <input
+    type="text"
+    name="author"
+    [(ngModel)]="author"
+    #authorInput="ngModel"
+    required
+    minlength="3"
+    maxlength="50"
+  >
+
+  <div *ngIf="authorInput.invalid && authorInput.touched">
+
+    <small *ngIf="authorInput.errors?.['required']">
+      Вкажіть автора
+    </small>
+
+    <small *ngIf="authorInput.errors?.['minlength']">
+      Ім'я автора повинно містити мінімум 3 символи
+    </small>
+
+  </div>
+
+  <br><br>
+
+  <!-- Опис книги -->
+  <label>Опис книги:</label>
+  <br>
+
+  <textarea
+    name="description"
+    [(ngModel)]="description"
+    #descriptionInput="ngModel"
+    required
+    minlength="10"
+    maxlength="200"
+  ></textarea>
+
+  <div *ngIf="descriptionInput.invalid && descriptionInput.touched">
+
+    <small *ngIf="descriptionInput.errors?.['required']">
+      Опис книги обов'язковий
+    </small>
+
+    <small *ngIf="descriptionInput.errors?.['minlength']">
+      Опис повинен містити мінімум 10 символів
+    </small>
+
+    <small *ngIf="descriptionInput.errors?.['maxlength']">
+      Опис не повинен перевищувати 200 символів
+    </small>
+
+  </div>
+
+  <br><br>
+
+  <button type="submit">
+    Додати книгу
+  </button>
+
+</form>
+<hr>
+
+<h2>Додані книги</h2>
+
+<div *ngFor="let book of books">
+
+  <h3>{{ book.title }}</h3>
+
+  <p>Автор: {{ book.author }}</p>
+
+  <p>Опис: {{ book.description }}</p>
+
+  <hr>
+
+</div>
